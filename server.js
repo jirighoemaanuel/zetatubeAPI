@@ -5,7 +5,10 @@ import { connectDB } from './db/connect.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
-const mongoUri = process.env.MONGODB_URL;
+const mongoUri =
+  process.env.MONGO_URI ||
+  process.env.MONGODB_URI ||
+  'mongodb://127.0.0.1:27017/zetatube';
 
 // Basic middleware
 app.use(express.json());
