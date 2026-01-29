@@ -1,11 +1,14 @@
-require('dotenv').config();
-const http = require('http');
-const app = require('./src/app');
+import dotenv from 'dotenv';
+import express from 'express';
+dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const port = 3000 || process.env.PORT;
+const app = express();
 
-const server = http.createServer(app);
+const server = () => {
+  app.listen(port, () => {
+    console.log(`sever running on port:${port}`);
+  });
+};
 
-server.listen(PORT, () => {
-  console.log(`ZetaTube API v1 listening on http://localhost:${PORT}`);
-});
+server();
